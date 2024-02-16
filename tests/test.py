@@ -1,15 +1,19 @@
 # Test
-from smartdb.modules import table_type_detector
-from smartdb.modules import password_strength_check
+from smartdb.algorithms import table_type_detector
+from smartdb.algorithms import password_strength_check
+
+from smartdb import prompts
 
 import sqlite3
 
 
 # Creating a test database.
 conn = sqlite3.connect('my.db')
-cur = conn.cursor()
-
-cur.execute('CREATE TABLE IF NOT EXISTS users(username TEXT, password TEXT)')
+prompts.create_table(conn, 'users', {
+    'username':'TEXT',
+    'role':'TEXT',
+    'password':'TEXT'
+})
 
 
 # Example table controller
