@@ -1,6 +1,4 @@
 # create_table | SmartDB
-import sqlite3
-
 
 def create_table(conn, table, columns):
     column_list = ','.join(str(column) + ' ' + str(type) for column,type in columns.items())
